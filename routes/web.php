@@ -30,6 +30,8 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class);
         Route::resource('technologies', TechnologyController::class);
         Route::resource('types', TypeController::class);
+        // rotte custom
+        Route::get('type-projects', [TypeController::class, 'typeProjects'])->name('type_projects');
     });
 
 Route::middleware('auth')->group(function () {

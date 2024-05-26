@@ -21,6 +21,10 @@
                 <a href="{{ route('admin.types.index') }}"><i class="fa-solid fa-list-check"></i>
                     Gestione tipologie</a>
             </li>
+            <li>
+                <a href="{{ route('admin.type_projects') }}"><i class="fa-solid fa-list-check"></i>
+                    Elenco categorie/post</a>
+            </li>
         </ul>
     </nav>
 </aside>
