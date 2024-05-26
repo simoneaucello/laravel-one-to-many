@@ -23,7 +23,7 @@
             </li>
             <li>
                 <a href="{{ route('admin.type_projects') }}"><i class="fa-solid fa-list-check"></i>
-                    Elenco categorie/post</a>
+                    Tipologie/Progetti</a>
             </li>
         </ul>
     </nav>

@@ -6,7 +6,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Elenco tipologie </h1>
+    {{-- <h1>Elenco tipologie </h1> --}}
 
     <table class="table">
         <thead>
