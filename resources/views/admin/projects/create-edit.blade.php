@@ -44,6 +44,19 @@
                     </small>
                 @enderror
             </div>
+
+            <div class="mb-3 bg-body-tertiary rounded p-2">
+                <label for="type" class="form-label">Tipologia </label>
+                <select name="type_id" class="form-select" aria-label="Default select example">
+                    <option value="">Seleziona una tipologia</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" @if (old('type_id', $project?->type_id) == $type->id) selected @endif>
+                            {{ $type->name }}</option>
+                    @endforeach
+
+                </select>
+            </div>
+
             <div class="mb-3 bg-body-tertiary rounded p-2">
                 <label for="image" class="form-label">Immagine:</label>
                 <input name="image" type="file" class="form-control @error('image') is-invalid @enderror "
