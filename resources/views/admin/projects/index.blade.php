@@ -11,6 +11,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Immagine</th>
                     <th scope="col">Titolo</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Linguaggi utilizzati</th>
                     <th scope="col">Azioni</th>
@@ -25,6 +26,7 @@
                                 alt="{{ $project->title }}" onerror="this.src='/img/no-image.png'">
                         </td>
                         <td class="fw-bold">{{ $project->title }}</td>
+                        <td class="">{{ $project->type?->name }}</td>
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->prog_lang }}</td>
                         <td>
