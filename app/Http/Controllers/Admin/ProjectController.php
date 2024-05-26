@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Functions\Helper;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -26,12 +27,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $types = Type::all();
         $mod_add_project = 'Inserisci nuovo progetto:';
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
         // stampo il form di creazione nuovo fumetto
-        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project'));
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project', 'types'));
     }
 
     /**
@@ -75,11 +77,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $types = Type::all();
         $mod_add_project = 'Modifica progetto:';
         $method = 'PUT';
         // $project = null;
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project'));
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project', 'types'));
     }
 
     /**
@@ -117,6 +120,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        if ($project->image) {
+            Storage::disk('public')->delete($project->image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('deleted', 'Il progetto ' . $project->title . ' è stato eliminato correttamente.');

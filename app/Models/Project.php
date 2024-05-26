@@ -16,5 +16,11 @@ class Project extends Model
         'image',
         'image_original_name',
         'prog_lang',
+        'type_id'
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
