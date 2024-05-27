@@ -3,7 +3,17 @@
 @section('content')
     <div class="container my-5">
 
-        <h1>Progetti:</h1>
+        <h1>Elenco Progetti:</h1>
+
+        @if (isset($_GET['toSearch']))
+            <h4>Ricerca per: {{ $_GET['toSearch'] }} | Elementi trovati: {{ $count_search }} </h4>
+        @endif
+
+        @if (session('delete'))
+            <div class="alert alert-success" role="alert">
+                {{ session('delete') }}
+            </div>
+        @endif
 
         <table class="table crud-table">
             <thead>

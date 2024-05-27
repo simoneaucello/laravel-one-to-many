@@ -17,9 +17,18 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('id', 'desc')->paginate(15);
 
-        return view('admin.projects.index', compact('projects'));
+        if (isset($_GET['toSearch'])) {
+            $projects = Project::where('title', 'LIKE', '%' . $_GET['toSearch'] . '%')->paginate(15);
+
+            $count_search = Project::where('title', 'LIKE', '%' . $_GET['toSearch'] . '%')->count();
+        } else {
+
+            $projects = Project::orderBy('id', 'desc')->paginate(15);
+            $count_search = Project::count();
+        }
+
+        return view('admin.projects.index', compact('projects', 'count_search'));
     }
 
     /**
@@ -127,6 +136,6 @@ class ProjectController extends Controller
 
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('deleted', 'Il progetto ' . $project->title . ' è stato eliminato correttamente.');
+        return redirect()->route('admin.projects.index')->with('delete', 'Il progetto ' . $project->title . ' è stato eliminato correttamente.');
     }
 }
