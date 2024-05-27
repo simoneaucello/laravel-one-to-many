@@ -37,12 +37,13 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
+        $add_mod_btn = 'AGGIUNGI';
         $mod_add_project = 'Inserisci nuovo progetto:';
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
         // stampo il form di creazione nuovo fumetto
-        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project', 'types'));
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project', 'types', 'add_mod_btn'));
     }
 
     /**
@@ -87,11 +88,12 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
+        $add_mod_btn = 'MODIFICA';
         $mod_add_project = 'Modifica progetto:';
         $method = 'PUT';
         // $project = null;
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project', 'types'));
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project', 'types', 'add_mod_btn'));
     }
 
     /**

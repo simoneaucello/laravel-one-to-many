@@ -65,7 +65,6 @@
                 <img class="thumb" id="thumb" src="{{ asset('storage/' . $project?->image) }}" alt=""
                     onerror="this.src='/img/no-image.png'">
                 <p> {{ $project?->image_original_name }} </p>
-
                 @error('image')
                     <small class="text-danger fw-bold">
                         {{ $message }}
@@ -84,7 +83,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn bg-success text-white">AGGIUNGI</button>
+            <button type="submit" class="btn bg-success text-white"> {{ $add_mod_btn }} </button>
             <button type="reset" class="btn bg-warning">RESET</button>
 
         </form>
